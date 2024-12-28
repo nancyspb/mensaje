@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Amor</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #FFDEE9, #B5FFFC);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+        }
+        .card {
+            width: 300px;
+            height: 200px;
+            background: white;
+            border: 2px solid #FF7F7F;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transform-origin: bottom;
+            transform: perspective(600px) rotateX(0);
+            transition: transform 1s ease-in-out;
+        }
+        .card.open {
+            transform: perspective(600px) rotateX(-180deg);
+        }
+        .card .front, .card .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            backface-visibility: hidden;
+        }
+        .card .front {
+            background: #FF7F7F;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .card .back {
+            background: #FFE5E5;
+            transform: rotateX(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .hearts {
+            position: absolute;
+            bottom: 10px;
+            animation: float 3s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .hearts img {
+            width: 30px;
+            margin: 0 5px;
+        }
+        audio {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card" onclick="openCard()">
+            <div class="front">
+                🎁 Abre tu carta
+            </div>
+            <div class="back">
+                <p>Hola mi solecito,</p>
+                <p>Feliz cumpleaños 🎉</p>
+                <p>Que tengas un lindo día como tus ojitos. ❤️</p>
+                <p>Espero que sepas lo mucho que te amo y que te adoro.</p>
+            </div>
+        </div>
+        <div class="hearts">
+            <img src="corazon1.png" alt="Corazón">
+            <img src="corazon2.png" alt="Corazón">
+            <img src="corazon3.png" alt="Corazón">
+        </div>
+    </div>
+    <audio autoplay loop>
+        <source src="somewhere_only_we_know.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <script>
+        function openCard() {
+            document.querySelector('.card').classList.add('open');
+        }
+    </script>
+</body>
+</html>
